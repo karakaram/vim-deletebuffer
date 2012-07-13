@@ -10,7 +10,7 @@ function! deletebuffer#DeleteInactiveBuffer()
   let n = 1
   while n <= last_buffer
     if buflisted(n) && !bufloaded(n)
-      silent exe 'bdel ' . n
+      silent execute 'bdelete ' . n
       let delete_count = delete_count + 1
     endif
     let n = n + 1
@@ -30,7 +30,7 @@ function! deletebuffer#DeleteExceptCurrentBuffer()
         echomsg bufname(n) . ' buffer is not writed'
         echohl None
       else
-        silent exe 'bdel ' . n
+        silent execute 'bdelete ' . n
         if ! buflisted(n)
           let delete_count = delete_count + 1
         endif
